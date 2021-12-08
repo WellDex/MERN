@@ -1,24 +1,30 @@
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose');
 
-const app = express()
+const app = express();
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://admin:qwert1234@cluster0.iupzj.mongodb.net/app?retryWrites=true&w=majority', {
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    'mongodb+srv://admin:admin@cluster0.b1td4.mongodb.net/todolist?retryWrites=true&w=majority',
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
-})
+    useCreateIndex: true,
+  }
+);
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5000;
 
-app.use(express.json({extended: true}))
+app.use(express.json({extended: true}));
 
-app.use('/api/auth', require('./routh/authRoutes'))
-app.use('/api/todo', require('./routh/todoRoutes'))
-app.use('/api/user', require('./routh/userRoutes'))
+app.use('/api/auth', require('./routh/authRoutes'));
+app.use('/api/todo', require('./routh/todoRoutes'));
+app.use('/api/user', require('./routh/userRoutes'));
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
 }
 
-app.listen(PORT, () => console.log(`Server has been started on port ${PORT}...`))
+app.listen(PORT, () =>
+  console.log(`Server has been started on port ${PORT}...`)
+);
