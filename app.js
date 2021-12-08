@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 mongoose.connect(
-  process.env.MONGODB_URI ||
-    'mongodb+srv://admin:admin@cluster0.b1td4.mongodb.net/todolist?retryWrites=true&w=majority',
+  'mongodb+srv://admin:admin@cluster0.b1td4.mongodb.net/todolist?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
